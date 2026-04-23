@@ -9,7 +9,7 @@ export default function ContactPage() {
       <StitchNav highlight="contact" />
 
       <main className={`${stitchMain} flex flex-col gap-stack-lg pt-4 md:pt-6`}>
-        <header className="text-center">
+        <header className="text-left sm:text-center">
           <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm font-semibold text-stitch-on-surface-variant">
             <span className="material-symbols-outlined text-stitch-secondary text-[20px]">
               forum
@@ -19,7 +19,7 @@ export default function ContactPage() {
           <h1 className="font-headline-xl text-headline-xl text-stitch-on-surface">
             Contact us
           </h1>
-          <p className="mx-auto mt-3 max-w-2xl font-body-lg text-body-lg text-stitch-on-surface-variant">
+          <p className="mt-3 max-w-2xl font-body-lg text-body-lg text-stitch-on-surface-variant sm:mx-auto">
             Have questions about AGENTIC AI? We&apos;re here to help.
           </p>
         </header>

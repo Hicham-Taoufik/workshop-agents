@@ -8,12 +8,12 @@ import { StitchFooter, StitchNav } from "@/components/stitch/StitchChrome";
  */
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col bg-stitch-background pt-[88px] font-body-md text-stitch-on-background">
+    <div className="flex min-h-screen flex-col bg-stitch-background pt-[92px] sm:pt-[96px] font-body-md text-stitch-on-background">
       <StitchNav highlight="home" />
 
-      <main className="mx-auto flex w-full max-w-container-max flex-grow flex-col gap-stack-lg px-margin-x pb-stack-lg">
+      <main className="mx-auto flex w-full max-w-container-max flex-grow flex-col gap-stack-lg px-4 pb-10 sm:px-margin-x sm:pb-stack-lg">
         {/* Hero — Stitch hero section */}
-        <section className="relative mt-stack-lg flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container-low p-5 text-center sm:min-h-[500px] sm:p-8">
+        <section className="stitch-fade-up relative mt-stack-lg flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container-low p-5 text-center sm:min-h-[500px] sm:p-8">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-stitch-primary-container/20 to-transparent" />
           <div className="relative z-10 flex max-w-3xl flex-col items-center gap-stack-md">
             <p className="font-label-sm text-label-sm text-stitch-primary">

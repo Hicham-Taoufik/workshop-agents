@@ -18,7 +18,7 @@ export default function ConferencePage() {
       <StitchNav highlight="conference" />
 
       <main className={`${stitchMain} flex flex-col gap-stack-lg pt-4 md:pt-6`}>
-        <section className="relative overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container p-5 shadow-lg sm:p-8 md:p-12">
+        <section className="stitch-fade-up relative overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container p-5 shadow-lg sm:p-8 md:p-12">
           <div className="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-stitch-primary/15 blur-2xl" />
           <div className="pointer-events-none absolute -bottom-14 -left-10 h-48 w-48 rounded-full bg-stitch-secondary/10 blur-2xl" />
           <div className="relative text-center">

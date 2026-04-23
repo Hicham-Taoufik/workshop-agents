@@ -73,11 +73,11 @@ export default function RegisterPage() {
       <StitchNav highlight="register" />
 
       <main className="w-full max-w-3xl flex-grow px-4 sm:px-6 md:px-8">
-        <header className="mb-8 text-center sm:mb-10 md:mb-12">
+        <header className="mb-8 text-left sm:mb-10 sm:text-center md:mb-12">
           <h1 className="mb-4 font-headline-xl text-headline-xl text-stitch-primary sm:mb-5">
             Workshop Registration
           </h1>
-          <p className="mx-auto max-w-2xl font-body-lg text-body-lg leading-relaxed text-stitch-on-surface-variant">
+          <p className="max-w-2xl font-body-lg text-body-lg leading-relaxed text-stitch-on-surface-variant sm:mx-auto">
             Secure your spot for AGENTIC AI on{" "}
             <span className="text-stitch-on-surface">16 MAY 2026</span> at 8:00 AM
             at the Faculty of Science, Tetouan. A certificate of participation will

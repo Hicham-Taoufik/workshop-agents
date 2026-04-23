@@ -12,7 +12,7 @@ export default function AboutPage() {
 
       <main className="mx-auto flex max-w-container-max flex-col gap-stack-lg px-4 pb-16 pt-6 sm:px-margin-x sm:pb-24 sm:pt-8 md:pt-12">
         {/* Hero — Stitch detail hero */}
-        <section className="relative flex flex-col items-center gap-6 overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 shadow-lg sm:gap-8 sm:p-8 md:flex-row md:p-16">
+        <section className="stitch-fade-up relative flex flex-col items-center gap-6 overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 shadow-lg sm:gap-8 sm:p-8 md:flex-row md:p-16">
           <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/3 rounded-full bg-stitch-primary/10 blur-[80px]" />
           <div className="relative z-10 flex flex-1 flex-col items-start gap-stack-sm">
             <div className="mb-2 flex flex-wrap gap-2">
