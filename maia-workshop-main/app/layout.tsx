@@ -17,7 +17,7 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: "AiA26 - International Conference on Artificial Intelligence Applications",
-  description: "The 7th International Conference on Artificial Intelligence Applications (AiA26), June 12-13, 2026 in Martil - Tetouan, Morocco.",
+  description: "The 7th International Conference on Artificial Intelligence Applications (AiA26), June 13th, 2026 in Martil - Tetouan, Morocco.",
   keywords: "AiA26, Artificial Intelligence Applications, Conference, Tetouan, Morocco, IEEE Morocco Section",
 };
 

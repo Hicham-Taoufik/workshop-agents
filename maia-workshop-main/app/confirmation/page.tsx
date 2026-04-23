@@ -1,16 +1,11 @@
 "use client";
 
-import { useSearchParams } from "next/navigation";
-import { Suspense } from "react";
 import Link from "next/link";
 import { FiArrowLeft } from "react-icons/fi";
 import { StitchFooter, StitchNav } from "@/components/stitch/StitchChrome";
 import { stitchMain, stitchPage, stitchSectionCard } from "@/lib/stitch-ui";
 
-function ConfirmationContent() {
-  const searchParams = useSearchParams();
-  const confirmationNumber = searchParams.get("number");
-
+export default function ConfirmationPage() {
   return (
     <div className={stitchPage}>
       <StitchNav highlight="neutral" />
@@ -30,11 +25,6 @@ function ConfirmationContent() {
           <p className="mb-2 font-body-lg text-body-lg text-stitch-on-surface-variant">
             Thank you for registering for the AGENTIC AI workshop.
           </p>
-          {confirmationNumber && (
-            <p className="mb-8 font-mono text-sm text-stitch-primary">
-              Confirmation #: {confirmationNumber}
-            </p>
-          )}
 
           <div className="mb-8 space-y-3 text-left font-body-md text-body-md text-stitch-on-surface-variant">
             <div className="flex items-start gap-3">
@@ -96,25 +86,5 @@ function ConfirmationContent() {
 
       <StitchFooter />
     </div>
-  );
-}
-
-function ConfirmationFallback() {
-  return (
-    <div className={stitchPage}>
-      <StitchNav highlight="neutral" />
-      <main className={`${stitchMain} flex flex-col items-center justify-center pt-24`}>
-        <p className="text-stitch-on-surface-variant">Loading…</p>
-      </main>
-      <StitchFooter />
-    </div>
-  );
-}
-
-export default function ConfirmationPage() {
-  return (
-    <Suspense fallback={<ConfirmationFallback />}>
-      <ConfirmationContent />
-    </Suspense>
   );
 }

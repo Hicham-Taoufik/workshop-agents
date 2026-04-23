@@ -61,7 +61,7 @@ export default function RegisterPage() {
         throw new Error(data.error || "Registration failed");
       }
 
-      router.push(`/confirmation?number=${data.confirmationNumber}`);
+      router.push("/confirmation");
     } catch (err) {
       setError(err instanceof Error ? err.message : "An error occurred");
       setIsSubmitting(false);

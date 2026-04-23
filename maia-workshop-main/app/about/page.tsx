@@ -111,6 +111,56 @@ export default function AboutPage() {
               </div>
             </section>
 
+            {/* Full curriculum */}
+            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-8 shadow-md">
+              <h2 className="mb-3 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
+                <span className="material-symbols-outlined text-stitch-primary">
+                  school
+                </span>
+                Full workshop curriculum
+              </h2>
+              <p className="mb-6 font-body-md text-body-md text-stitch-on-surface-variant">
+                Complete progression from NLP foundations to agentic AI,
+                advanced RAG, automation, and evaluation.
+              </p>
+              <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {[
+                  "Background on NLP and tasks",
+                  "Tokenization",
+                  "Embeddings",
+                  "Transformer architecture",
+                  "Large Language Models",
+                  "Hugging Face",
+                  "NVIDIA open-source and overview",
+                  "Context length and temperature",
+                  "Prompting and in-context learning",
+                  "Chain of thought",
+                  "Agentic LLMs",
+                  "Retrieval-augmented generation",
+                  "Advanced RAG techniques",
+                  "Automation low-code platforms",
+                  "n8n",
+                  "LLM evaluation",
+                  "LLM-as-a-judge overview",
+                  "Best practices and benefits",
+                  "Current trends",
+                  "Trending topics",
+                ].map((topic, index) => (
+                  <li
+                    key={topic}
+                    className="flex items-start gap-3 rounded-lg border border-stitch-outline-variant/30 bg-stitch-surface-container px-4 py-3"
+                  >
+                    <span className="mt-0.5 inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-stitch-primary/15 text-xs font-bold text-stitch-primary">
+                      {index + 1}
+                    </span>
+                    <span className="font-body-md text-body-md text-stitch-on-surface-variant">
+                      {topic}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </section>
+
             {/* Schedule — Stitch timeline */}
             <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-8 shadow-md">
               <h2 className="mb-8 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">

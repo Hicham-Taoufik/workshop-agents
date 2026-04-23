@@ -25,7 +25,9 @@ export default function AppChrome({
   children: React.ReactNode;
 }) {
   const pathname = usePathname() ?? "";
-  const stitchShell = STITCH_SHELL_ROUTES.includes(pathname);
+  // During hydration, pathname can be temporarily empty. Default to Stitch shell
+  // to avoid server/client chrome mismatches on Stitch-routed pages.
+  const stitchShell = !pathname || STITCH_SHELL_ROUTES.includes(pathname);
 
   return (
     <>

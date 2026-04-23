@@ -48,7 +48,7 @@ export default function ConferencePage() {
                 ENS, Abdelmalek Essaadi University · Martil / Tetouan, Morocco
               </span>
               <span className="rounded-full border border-white/10 bg-stitch-surface-container-low px-4 py-2">
-                12–13 June 2026
+                June 13th, 2026
               </span>
             </div>
           </div>
@@ -62,8 +62,8 @@ export default function ConferencePage() {
           </h2>
           <p className="mb-4 font-body-lg text-body-lg text-stitch-on-surface-variant">
             The 7th International Conference on Artificial Intelligence
-            Applications (AiA26) is a two-day event,{" "}
-            <span className="text-stitch-on-surface">12–13 June 2026</span>, hosted
+            Applications (AiA26) takes place on{" "}
+            <span className="text-stitch-on-surface">June 13th, 2026</span>, hosted
             at the École Normale Supérieure (ENS), Abdelmalek Essaadi University,
             Tetouan, Morocco.
           </p>
@@ -77,7 +77,7 @@ export default function ConferencePage() {
 
         <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
-            { icon: "groups", label: "Participants", value: "305+" },
+            { icon: "groups", label: "Participants", value: "400+" },
             { icon: "public", label: "Countries", value: "7+" },
             { icon: "menu_book", label: "Publications", value: "120" },
             { icon: "military_tech", label: "Awards", value: "18" },
@@ -127,10 +127,10 @@ export default function ConferencePage() {
                   Important dates
                 </h3>
                 <p className="text-stitch-on-surface-variant">
-                  12–13 June 2026
+                  June 13th, 2026
                 </p>
                 <p className="text-sm text-stitch-outline">
-                  Two-day main conference (ENS, Abdelmalek Essaadi University)
+                  Main conference day (ENS, Abdelmalek Essaadi University)
                 </p>
               </div>
             </div>

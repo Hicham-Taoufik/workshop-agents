@@ -41,9 +41,9 @@ export default function Footer() {
               <div className="flex items-start gap-2 text-sm">
                 <FiCalendar className="mt-0.5 shrink-0 text-ds-cta" />
                 <div>
-                  <p className="font-medium text-ds-on">June 12-13, 2026</p>
+                  <p className="font-medium text-ds-on">June 13th, 2026</p>
                   <p className="text-xs text-ds-outline">
-                    Main conference day: June 13, 2026
+                    Main conference day
                   </p>
                 </div>
               </div>
