@@ -13,7 +13,7 @@ export default function Home() {
 
       <main className="mx-auto flex w-full max-w-container-max flex-grow flex-col gap-stack-lg px-margin-x pb-stack-lg">
         {/* Hero — Stitch hero section */}
-        <section className="relative mt-stack-lg flex min-h-[500px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container-low p-8 text-center">
+        <section className="relative mt-stack-lg flex min-h-[420px] items-center justify-center overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container-low p-5 text-center sm:min-h-[500px] sm:p-8">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-stitch-primary-container/20 to-transparent" />
           <div className="relative z-10 flex max-w-3xl flex-col items-center gap-stack-md">
             <p className="font-label-sm text-label-sm text-stitch-primary">
@@ -33,7 +33,7 @@ export default function Home() {
             </p>
             <Link
               href="/register"
-              className="transform rounded-lg bg-stitch-secondary px-6 py-3 font-label-sm text-label-sm text-stitch-on-secondary transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(238,152,0,0.4)]"
+              className="transform rounded-lg bg-stitch-secondary px-5 py-2.5 font-label-sm text-label-sm text-stitch-on-secondary transition-all hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(238,152,0,0.4)] sm:px-6 sm:py-3"
             >
               Register Now
             </Link>
@@ -62,7 +62,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-grow flex-col gap-stack-sm p-6">
+              <div className="flex flex-grow flex-col gap-stack-sm p-4 sm:p-6">
                 <h3 className="font-headline-md text-headline-md text-stitch-on-surface">
                   BUILD YOUR OWN AGENTIC PROOF-OF-CONCEPT
                 </h3>
@@ -112,7 +112,7 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="flex flex-grow flex-col gap-stack-sm p-6">
+              <div className="flex flex-grow flex-col gap-stack-sm p-4 sm:p-6">
                 <h3 className="font-headline-md text-headline-md text-stitch-on-surface">
                   ORCHESTRATING THE AGENTIC SHIFT
                 </h3>
@@ -143,7 +143,7 @@ export default function Home() {
             </article>
 
             <article className="flex flex-col overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(3,72,148,0.15)]">
-              <div className="flex flex-col items-center gap-6 bg-stitch-surface-variant px-6 pb-6 pt-8 sm:gap-7">
+              <div className="flex flex-col items-center gap-6 bg-stitch-surface-variant px-4 pb-4 pt-6 sm:gap-7 sm:px-6 sm:pb-6 sm:pt-8">
                 <div className="relative h-44 w-44 shrink-0 overflow-hidden rounded-full border-[3px] border-stitch-primary/35 bg-stitch-surface-container shadow-[0_0_28px_rgba(171,199,255,0.2)] sm:h-48 sm:w-48">
                   <div className="pointer-events-none absolute inset-0 z-[1] rounded-full ring-1 ring-inset ring-white/5" />
                   <Image
@@ -180,7 +180,7 @@ export default function Home() {
                   </p>
                 </div>
               </div>
-              <div className="flex flex-grow flex-col p-6 pt-2">
+              <div className="flex flex-grow flex-col p-4 pt-2 sm:p-6 sm:pt-2">
                 <div className="mt-auto pt-2">
                   <Link
                     href="/register"

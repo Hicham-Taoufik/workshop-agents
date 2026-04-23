@@ -10,9 +10,9 @@ export default function AboutPage() {
     <div className="min-h-screen bg-stitch-background pt-[88px] font-body-md text-stitch-on-background antialiased selection:bg-stitch-primary/30 selection:text-stitch-primary">
       <StitchNav highlight="about" />
 
-      <main className="mx-auto flex max-w-container-max flex-col gap-stack-lg px-margin-x pb-24 pt-8 md:pt-12">
+      <main className="mx-auto flex max-w-container-max flex-col gap-stack-lg px-4 pb-16 pt-6 sm:px-margin-x sm:pb-24 sm:pt-8 md:pt-12">
         {/* Hero — Stitch detail hero */}
-        <section className="relative flex flex-col items-center gap-8 overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-8 shadow-lg md:flex-row md:p-16">
+        <section className="relative flex flex-col items-center gap-6 overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 shadow-lg sm:gap-8 sm:p-8 md:flex-row md:p-16">
           <div className="pointer-events-none absolute right-0 top-0 h-[500px] w-[500px] translate-x-1/3 -translate-y-1/3 rounded-full bg-stitch-primary/10 blur-[80px]" />
           <div className="relative z-10 flex flex-1 flex-col items-start gap-stack-sm">
             <div className="mb-2 flex flex-wrap gap-2">
@@ -38,7 +38,7 @@ export default function AboutPage() {
             <div className="mt-4 flex flex-wrap gap-4">
               <Link
                 href="/register"
-                className="flex items-center gap-2 rounded-lg bg-stitch-secondary-container px-8 py-3.5 font-label-sm text-label-sm text-stitch-on-secondary-container shadow-[0_0_20px_rgba(238,152,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(238,152,0,0.4)]"
+                className="flex items-center gap-2 rounded-lg bg-stitch-secondary-container px-5 py-3 font-label-sm text-label-sm text-stitch-on-secondary-container shadow-[0_0_20px_rgba(238,152,0,0.2)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(238,152,0,0.4)] sm:px-8 sm:py-3.5"
               >
                 Register Now
                 <span className="material-symbols-outlined text-[18px]">
@@ -47,7 +47,7 @@ export default function AboutPage() {
               </Link>
               <Link
                 href="/conference"
-                className="flex items-center gap-2 rounded-lg border border-stitch-primary bg-stitch-primary/5 px-8 py-3.5 font-label-sm text-label-sm text-stitch-primary transition-colors hover:bg-stitch-primary/10"
+                className="flex items-center gap-2 rounded-lg border border-stitch-primary bg-stitch-primary/5 px-5 py-3 font-label-sm text-label-sm text-stitch-primary transition-colors hover:bg-stitch-primary/10 sm:px-8 sm:py-3.5"
               >
                 <span className="material-symbols-outlined text-[18px]">event</span>
                 Main conference
@@ -68,7 +68,7 @@ export default function AboutPage() {
         <div className="grid grid-cols-1 gap-gutter md:grid-cols-12">
           <div className="flex flex-col gap-stack-lg md:col-span-8">
             {/* What You'll Learn */}
-            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-8 shadow-md transition-transform duration-300 hover:-translate-y-1">
+            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5 shadow-md transition-transform duration-300 hover:-translate-y-1 sm:p-8">
               <h2 className="mb-6 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
                 <span className="material-symbols-outlined text-stitch-primary">
                   lightbulb
@@ -112,7 +112,7 @@ export default function AboutPage() {
             </section>
 
             {/* Full curriculum */}
-            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-8 shadow-md">
+            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5 shadow-md sm:p-8">
               <h2 className="mb-3 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
                 <span className="material-symbols-outlined text-stitch-primary">
                   school
@@ -162,7 +162,7 @@ export default function AboutPage() {
             </section>
 
             {/* Schedule — Stitch timeline */}
-            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-8 shadow-md">
+            <section className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5 shadow-md sm:p-8">
               <h2 className="mb-8 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
                 <span className="material-symbols-outlined text-stitch-primary">
                   schedule

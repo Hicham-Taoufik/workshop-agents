@@ -18,7 +18,7 @@ export default function ConferencePage() {
       <StitchNav highlight="conference" />
 
       <main className={`${stitchMain} flex flex-col gap-stack-lg pt-4 md:pt-6`}>
-        <section className="relative overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container p-8 shadow-lg md:p-12">
+        <section className="relative overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container p-5 shadow-lg sm:p-8 md:p-12">
           <div className="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-stitch-primary/15 blur-2xl" />
           <div className="pointer-events-none absolute -bottom-14 -left-10 h-48 w-48 rounded-full bg-stitch-secondary/10 blur-2xl" />
           <div className="relative text-center">
@@ -55,7 +55,7 @@ export default function ConferencePage() {
         </section>
 
         <section
-          className={`${stitchSectionCard} border-stitch-outline-variant/30 p-6 md:p-8 lg:p-10`}
+          className={`${stitchSectionCard} border-stitch-outline-variant/30 p-5 sm:p-6 md:p-8 lg:p-10`}
         >
           <h2 className="mb-4 font-headline-lg text-headline-lg text-stitch-on-surface">
             Conference overview
@@ -75,7 +75,7 @@ export default function ConferencePage() {
           </p>
         </section>
 
-        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <section className="grid gap-4 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {[
             { icon: "groups", label: "Participants", value: "400+" },
             { icon: "public", label: "Countries", value: "7+" },
@@ -117,7 +117,7 @@ export default function ConferencePage() {
         </section>
 
         <section className="grid gap-6 md:grid-cols-2">
-          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-6 shadow-md">
+          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 sm:p-6 shadow-md">
             <div className="mb-4 flex items-center gap-4">
               <div className="rounded-lg bg-stitch-primary-container/30 p-3 text-stitch-primary">
                 <span className="material-symbols-outlined text-2xl">event</span>
@@ -135,7 +135,7 @@ export default function ConferencePage() {
               </div>
             </div>
           </div>
-          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-6 shadow-md">
+          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 sm:p-6 shadow-md">
             <div className="mb-4 flex items-center gap-4">
               <div className="rounded-lg bg-stitch-primary-container/30 p-3 text-stitch-primary">
                 <span className="material-symbols-outlined text-2xl">
@@ -206,16 +206,16 @@ export default function ConferencePage() {
           </div>
         </section>
 
-        <div className="flex flex-wrap justify-center gap-4 pb-4">
+        <div className="flex flex-col justify-center gap-3 pb-4 sm:flex-row sm:gap-4">
           <Link
             href="/register"
-            className="rounded-lg bg-stitch-secondary-container px-8 py-3 font-label-sm text-label-sm text-stitch-on-secondary-container shadow-[0_0_20px_rgba(238,152,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(238,152,0,0.35)]"
+            className="rounded-lg bg-stitch-secondary-container px-6 py-3 text-center font-label-sm text-label-sm text-stitch-on-secondary-container shadow-[0_0_20px_rgba(238,152,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(238,152,0,0.35)] sm:px-8"
           >
             Workshop registration
           </Link>
           <Link
             href="/about"
-            className="rounded-lg border border-stitch-primary bg-stitch-primary/5 px-8 py-3 font-label-sm text-label-sm text-stitch-primary transition-colors hover:bg-stitch-primary/10"
+            className="rounded-lg border border-stitch-primary bg-stitch-primary/5 px-6 py-3 text-center font-label-sm text-label-sm text-stitch-primary transition-colors hover:bg-stitch-primary/10 sm:px-8"
           >
             AGENTIC AI event
           </Link>

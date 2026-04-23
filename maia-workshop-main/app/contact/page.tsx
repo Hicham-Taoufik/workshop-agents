@@ -53,7 +53,7 @@ export default function ContactPage() {
           </a>
         </div>
 
-        <div className="relative overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-8 shadow-lg">
+        <div className="relative overflow-hidden rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-5 shadow-lg sm:p-8">
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-stitch-primary-container/20 to-transparent" />
           <div className="relative flex items-center gap-3">
             <Image

@@ -24,15 +24,15 @@ export function StitchNav({ highlight = "neutral" }: StitchNavProps) {
   const eventActive = highlight === "about";
   const registerCtaClass =
     highlight === "register"
-      ? "font-manrope rounded-lg bg-stitch-secondary px-4 py-2 text-sm font-semibold tracking-tight text-stitch-on-secondary shadow-[0_0_12px_rgba(238,152,0,0.35)] ring-2 ring-stitch-secondary/60 transition-all hover:shadow-[0_0_15px_rgba(238,152,0,0.3)]"
-      : "font-manrope rounded-lg bg-stitch-secondary px-4 py-2 text-sm font-semibold tracking-tight text-stitch-on-secondary transition-all hover:shadow-[0_0_15px_rgba(238,152,0,0.3)]";
+      ? "font-manrope rounded-lg bg-stitch-secondary px-3 py-1.5 text-xs font-semibold tracking-tight text-stitch-on-secondary shadow-[0_0_12px_rgba(238,152,0,0.35)] ring-2 ring-stitch-secondary/60 transition-all hover:shadow-[0_0_15px_rgba(238,152,0,0.3)] sm:px-4 sm:py-2 sm:text-sm"
+      : "font-manrope rounded-lg bg-stitch-secondary px-3 py-1.5 text-xs font-semibold tracking-tight text-stitch-on-secondary transition-all hover:shadow-[0_0_15px_rgba(238,152,0,0.3)] sm:px-4 sm:py-2 sm:text-sm";
 
   return (
     <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#111827]/80 shadow-[0_0_20px_rgba(3,72,148,0.1)] backdrop-blur-xl">
-      <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 sm:py-4">
+      <div className="mx-auto flex w-full max-w-7xl flex-nowrap items-center justify-between gap-2 px-3 py-3 sm:gap-3 sm:px-6 sm:py-4">
         <Link
           href="/"
-          className="text-xl font-extrabold tracking-tighter text-blue-500"
+          className="shrink-0 text-lg font-extrabold tracking-tighter text-blue-500 sm:text-xl"
         >
           AiA26
         </Link>
@@ -59,11 +59,11 @@ export function StitchNav({ highlight = "neutral" }: StitchNavProps) {
             Contact
           </Link>
         </div>
-        <details className="relative md:hidden">
+        <details className="relative shrink-0 md:hidden">
           <summary className="cursor-pointer list-none rounded-lg border border-white/15 px-3 py-2 font-manrope text-sm font-semibold text-blue-400 [&::-webkit-details-marker]:hidden">
             Menu
           </summary>
-          <div className="absolute right-0 z-50 mt-2 min-w-[12rem] rounded-lg border border-white/10 bg-[#111827] py-2 shadow-lg">
+          <div className="absolute right-0 z-50 mt-2 min-w-[13rem] rounded-lg border border-white/10 bg-[#111827] py-2 shadow-lg">
             <Link
               href="/"
               className="block px-4 py-2 text-sm text-gray-300 hover:bg-white/5 hover:text-blue-300"
@@ -96,14 +96,14 @@ export function StitchNav({ highlight = "neutral" }: StitchNavProps) {
             </Link>
           </div>
         </details>
-        <div className="flex items-center gap-2 sm:gap-4">
+        <div className="flex items-center gap-1.5 sm:gap-4">
           <Link
             href="/contact"
-            className="flex items-center justify-center rounded-full p-2 text-blue-400 transition-all hover:bg-white/5 active:scale-95"
+            className="flex items-center justify-center rounded-full p-1.5 text-blue-400 transition-all hover:bg-white/5 active:scale-95 sm:p-2"
             aria-label="Contact"
           >
             <span
-              className="material-symbols-outlined text-[24px]"
+              className="material-symbols-outlined text-[22px] sm:text-[24px]"
               style={{ fontVariationSettings: "'FILL' 1" }}
             >
               mail
@@ -111,7 +111,7 @@ export function StitchNav({ highlight = "neutral" }: StitchNavProps) {
           </Link>
           <Link
             href="/about"
-            className="flex items-center justify-center rounded-full p-2 text-blue-400 transition-all hover:bg-white/5 active:scale-95"
+            className="hidden items-center justify-center rounded-full p-2 text-blue-400 transition-all hover:bg-white/5 active:scale-95 sm:flex"
             aria-label="About"
           >
             <span
@@ -132,10 +132,10 @@ export function StitchNav({ highlight = "neutral" }: StitchNavProps) {
 
 export function StitchFooter() {
   return (
-    <footer className="mt-auto w-full border-t border-white/5 bg-[#0b0f1a] px-6 py-12">
-      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-6 md:flex-row">
+    <footer className="mt-auto w-full border-t border-white/5 bg-[#0b0f1a] px-4 py-8 sm:px-6 sm:py-12">
+      <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 sm:gap-6 md:flex-row">
         <div className="text-lg font-bold text-white">AiA26</div>
-        <div className="flex flex-wrap items-center justify-center gap-6">
+        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
           <Link
             href="/about"
             className="font-manrope text-xs text-gray-400 underline-offset-4 transition-opacity hover:text-blue-500 hover:underline hover:opacity-80"
