@@ -1,122 +1,147 @@
-'use client';
+"use client";
 
-// Force dynamic rendering to avoid pre-render errors with useSearchParams
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
-import { useState, Suspense } from 'react';
-import { useRouter, useSearchParams } from 'next/navigation';
-import { FiLock, FiUser, FiKey, FiAlertTriangle } from 'react-icons/fi';
+import { useState, Suspense } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
+import { FiLock, FiUser, FiKey, FiAlertTriangle } from "react-icons/fi";
+import { StitchFooter, StitchNav } from "@/components/stitch/StitchChrome";
+import {
+  stitchField,
+  stitchLabel,
+  stitchMain,
+  stitchPage,
+  stitchSectionCard,
+} from "@/lib/stitch-ui";
 
 function AdminLoginInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const from = searchParams.get('from') || '/admin';
+  const from = searchParams.get("from") || "/admin";
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setError('');
+    setError("");
     setLoading(true);
 
     try {
-      const res = await fetch('/api/admin/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, password }),
       });
 
       const data = await res.json();
       if (!res.ok) {
-        throw new Error(data.error || 'Invalid credentials');
+        throw new Error(data.error || "Invalid credentials");
       }
 
       router.push(from);
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'Login failed');
+      setError(err instanceof Error ? err.message : "Login failed");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-primary-50 flex items-center justify-center px-4">
-      <div className="max-w-md w-full bg-white shadow-medium rounded-2xl p-8 border border-neutral-100">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="bg-primary-100 p-3 rounded-xl">
-            <FiLock className="text-primary-600 text-2xl" />
+    <div className={stitchPage}>
+      <StitchNav highlight="neutral" />
+
+      <main
+        className={`${stitchMain} flex flex-grow flex-col items-center justify-center py-12`}
+      >
+        <div className={`${stitchSectionCard} w-full max-w-md`}>
+          <div className="relative z-10 mb-6 flex items-center gap-3">
+            <div className="rounded-xl bg-stitch-primary-container/30 p-3 text-stitch-primary">
+              <FiLock className="text-2xl" />
+            </div>
+            <div>
+              <h1 className="font-headline-md text-headline-md text-stitch-on-surface">
+                Admin access
+              </h1>
+              <p className="text-sm text-stitch-on-surface-variant">
+                Enter your credentials to continue
+              </p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-2xl font-bold text-neutral-900 font-display">Admin Access</h1>
-            <p className="text-sm text-neutral-600">Enter your credentials to continue</p>
-          </div>
+
+          {error && (
+            <div className="relative z-10 mb-4 flex items-start gap-2 rounded-lg border border-stitch-error/40 bg-stitch-error-container/20 px-3 py-2 text-sm text-stitch-error">
+              <FiAlertTriangle className="mt-0.5 shrink-0" />
+              <span>{error}</span>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="relative z-10 space-y-5">
+            <div>
+              <label className={`${stitchLabel} mb-2 flex items-center gap-2`}>
+                <FiUser className="text-stitch-outline" /> Username
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                required
+                className={stitchField}
+                placeholder="Admin username"
+                autoComplete="username"
+              />
+            </div>
+
+            <div>
+              <label className={`${stitchLabel} mb-2 flex items-center gap-2`}>
+                <FiKey className="text-stitch-outline" /> Password
+              </label>
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                className={stitchField}
+                placeholder="••••••••"
+                autoComplete="current-password"
+              />
+            </div>
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-stitch-primary-container py-3 font-label-sm text-label-sm text-stitch-on-primary-container transition-all hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {loading ? "Signing in…" : "Sign in"}
+            </button>
+          </form>
         </div>
+      </main>
 
-        {error && (
-          <div className="mb-4 flex items-start gap-2 bg-red-50 border border-red-200 text-red-700 px-3 py-2 rounded-lg text-sm">
-            <FiAlertTriangle className="mt-0.5" />
-            <span>{error}</span>
-          </div>
-        )}
-
-        <form onSubmit={handleSubmit} className="space-y-5">
-          <div>
-            <label className="block text-sm font-semibold text-neutral-700 mb-2 flex items-center gap-2">
-              <FiUser className="text-neutral-500" /> Username
-            </label>
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-              placeholder="Admin username"
-              autoComplete="username"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-semibold text-neutral-700 mb-2 flex items-center gap-2">
-              <FiKey className="text-neutral-500" /> Password
-            </label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full px-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-colors"
-              placeholder="********"
-              autoComplete="current-password"
-            />
-          </div>
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-primary-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-primary-700 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 shadow-medium"
-          >
-            {loading ? 'Signing in…' : 'Sign In'}
-          </button>
-        </form>
-
-      </div>
+      <StitchFooter />
     </div>
   );
 }
 
 export default function AdminLoginPage() {
   return (
-    <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center bg-neutral-50">
-        <p className="text-neutral-600">Loading…</p>
-      </div>
-    }>
+    <Suspense
+      fallback={
+        <div className={stitchPage}>
+          <StitchNav highlight="neutral" />
+          <main
+            className={`${stitchMain} flex flex-grow items-center justify-center py-24`}
+          >
+            <p className="text-stitch-on-surface-variant">Loading…</p>
+          </main>
+          <StitchFooter />
+        </div>
+      }
+    >
       <AdminLoginInner />
     </Suspense>
   );
 }
-

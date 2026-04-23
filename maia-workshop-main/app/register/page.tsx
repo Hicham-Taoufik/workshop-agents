@@ -1,166 +1,216 @@
-'use client';
+"use client";
 
-import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-import { FiLoader, FiCheck } from 'react-icons/fi';
+import { useState, FormEvent } from "react";
+import { useRouter } from "next/navigation";
+import { FiLoader } from "react-icons/fi";
+import Link from "next/link";
+import { StitchFooter, StitchNav } from "@/components/stitch/StitchChrome";
+import {
+  stitchField as field,
+  stitchLabel as label,
+  stitchPage,
+  stitchSectionCard as sectionCard,
+} from "@/lib/stitch-ui";
 
 export default function RegisterPage() {
   const router = useRouter();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [error, setError] = useState('');
-  
+  const [error, setError] = useState("");
+
   const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    phone: '',
-    organization: '',
-    jobTitleDegree: '',
-    questions: '',
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    organization: "",
+    jobTitleDegree: "",
+    questions: "",
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setError('');
+    setError("");
+
+    const fullName =
+      `${formData.firstName} ${formData.lastName}`.trim() || formData.email;
 
     try {
-      const response = await fetch('/api/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const response = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName,
+          email: formData.email,
+          phone: formData.phone,
+          organization: formData.organization,
+          jobTitleDegree: formData.jobTitleDegree,
+          questions: formData.questions,
+        }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Registration failed');
+        throw new Error(data.error || "Registration failed");
       }
 
       router.push(`/confirmation?number=${data.confirmationNumber}`);
     } catch (err) {
-      setError(err instanceof Error ? err.message : 'An error occurred');
+      setError(err instanceof Error ? err.message : "An error occurred");
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-neutral-50 via-white to-primary-50 py-16 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-12 animate-fade-in">
-          <div className="inline-block bg-primary-100 px-4 py-2 rounded-full text-primary-700 font-semibold text-sm mb-4">
-            AGENTIC AI WORKSHOP
-          </div>
-          <h1 className="text-4xl md:text-5xl font-bold text-neutral-900 mb-4 font-display">
+    <div className={`${stitchPage} items-center py-8 sm:py-10 md:py-12`}>
+      <StitchNav highlight="register" />
+
+      <main className="w-full max-w-3xl flex-grow px-4 sm:px-6 md:px-8">
+        <header className="mb-8 text-center sm:mb-10 md:mb-12">
+          <h1 className="mb-4 font-headline-xl text-headline-xl text-stitch-primary sm:mb-5">
             Workshop Registration
           </h1>
-          <p className="text-lg text-neutral-600 max-w-2xl mx-auto">
-            Secure your spot for AGENTIC AI on 16 MAY 2026 at 8:00 AM. A certificate of participation will be delivered to attendees who complete the activity.
+          <p className="mx-auto max-w-2xl font-body-lg text-body-lg leading-relaxed text-stitch-on-surface-variant">
+            Secure your spot for AGENTIC AI on{" "}
+            <span className="text-stitch-on-surface">16 MAY 2026</span> at 8:00 AM
+            at the Faculty of Science, Tetouan. A certificate of participation will
+            be delivered to attendees who complete the activity.
           </p>
-        </div>
+        </header>
 
-        <form onSubmit={handleSubmit} className="bg-white text-neutral-900 rounded-2xl shadow-medium p-8 border border-neutral-200">
+        <form onSubmit={handleSubmit} className="space-y-8 sm:space-y-10">
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-6">
+            <div
+              className="rounded-xl border border-stitch-error/40 bg-stitch-error-container/20 px-4 py-3 text-sm text-stitch-error"
+              role="alert"
+            >
               {error}
             </div>
           )}
 
-          <div className="space-y-6">
-            {/* Full Name */}
-            <div>
-              <label htmlFor="fullName" className="block text-sm font-semibold text-neutral-700 mb-2">
-                Full Name <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                required
-                value={formData.fullName}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                placeholder="Enter your full name"
-              />
+          {/* Personal Details — Stitch section */}
+          <section className={`${sectionCard} p-5 sm:p-6 md:p-7`}>
+            <div className="pointer-events-none absolute inset-0 bg-stitch-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
+            <h2 className="mb-5 sm:mb-6 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
+              <span className="material-symbols-outlined text-stitch-primary">
+                person
+              </span>
+              Personal Details
+            </h2>
+            <div className="relative grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2">
+              <div className="flex flex-col gap-2.5">
+                <label className={label} htmlFor="firstName">
+                  First Name
+                </label>
+                <input
+                  id="firstName"
+                  name="firstName"
+                  type="text"
+                  required
+                  value={formData.firstName}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="First name"
+                  autoComplete="given-name"
+                />
+              </div>
+              <div className="flex flex-col gap-2.5">
+                <label className={label} htmlFor="lastName">
+                  Last Name
+                </label>
+                <input
+                  id="lastName"
+                  name="lastName"
+                  type="text"
+                  required
+                  value={formData.lastName}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="Last name"
+                  autoComplete="family-name"
+                />
+              </div>
+              <div className="flex flex-col gap-2.5 md:col-span-2">
+                <label className={label} htmlFor="email">
+                  Email Address
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="your.email@example.com"
+                  autoComplete="email"
+                />
+              </div>
+              <div className="flex flex-col gap-2.5 md:col-span-2">
+                <label className={label} htmlFor="phone">
+                  Phone Number
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="+212 697 068 234"
+                  autoComplete="tel"
+                />
+              </div>
+              <div className="flex flex-col gap-2.5">
+                <label className={label} htmlFor="jobTitleDegree">
+                  Job Title / Role &amp; Degree
+                </label>
+                <input
+                  id="jobTitleDegree"
+                  name="jobTitleDegree"
+                  type="text"
+                  value={formData.jobTitleDegree}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="Your role and degree"
+                />
+              </div>
+              <div className="flex flex-col gap-2.5">
+                <label className={label} htmlFor="organization">
+                  Organization / Company
+                </label>
+                <input
+                  id="organization"
+                  name="organization"
+                  type="text"
+                  value={formData.organization}
+                  onChange={handleChange}
+                  className={field}
+                  placeholder="Organization (optional)"
+                />
+              </div>
             </div>
+          </section>
 
-            {/* Email */}
-            <div>
-              <label htmlFor="email" className="block text-sm font-semibold text-neutral-700 mb-2">
-                Email Address <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                required
-                value={formData.email}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                placeholder="your.email@example.com"
-              />
-            </div>
-
-            {/* Phone */}
-            <div>
-              <label htmlFor="phone" className="block text-sm font-semibold text-neutral-700 mb-2">
-                Phone Number <span className="text-red-500">*</span>
-              </label>
-              <input
-                type="tel"
-                id="phone"
-                name="phone"
-                required
-                value={formData.phone}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                placeholder="+212 697 068 234"
-              />
-            </div>
-
-            {/* Organization/Company */}
-            <div>
-              <label htmlFor="organization" className="block text-sm font-semibold text-neutral-700 mb-2">
-                Organization/Company
-              </label>
-              <input
-                type="text"
-                id="organization"
-                name="organization"
-                value={formData.organization}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                placeholder="Your organization or company"
-              />
-            </div>
-
-            {/* Job Title/Role and Degree */}
-            <div>
-              <label htmlFor="jobTitleDegree" className="block text-sm font-semibold text-neutral-700 mb-2">
-                Job Title/Role and Degree
-              </label>
-              <input
-                type="text"
-                id="jobTitleDegree"
-                name="jobTitleDegree"
-                value={formData.jobTitleDegree}
-                onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all"
-                placeholder="Your job title, role, and degree"
-              />
-            </div>
-
-            {/* Questions/Comments */}
-            <div>
-              <label htmlFor="questions" className="block text-sm font-semibold text-neutral-700 mb-2">
+          {/* Additional information (replaces Stitch payment block — free event) */}
+          <section className={`${sectionCard} p-5 sm:p-6 md:p-7`}>
+            <div className="pointer-events-none absolute inset-0 bg-stitch-primary/5 opacity-0 transition-opacity group-hover:opacity-100" />
+            <h2 className="mb-5 sm:mb-6 flex items-center gap-2 font-headline-md text-headline-md text-stitch-on-surface">
+              <span className="material-symbols-outlined text-stitch-primary">
+                chat
+              </span>
+              Additional Information
+            </h2>
+            <div className="flex flex-col gap-2.5">
+              <label className={label} htmlFor="questions">
                 Questions or Comments
               </label>
               <textarea
@@ -169,38 +219,44 @@ export default function RegisterPage() {
                 rows={4}
                 value={formData.questions}
                 onChange={handleChange}
-                className="w-full px-4 py-3 border border-neutral-300 rounded-lg bg-white text-neutral-900 placeholder:text-neutral-400 focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-all resize-none"
-                placeholder="Any questions or comments you'd like to share..."
+                className={`${field} resize-none`}
+                placeholder="Optional message for organizers…"
               />
             </div>
-          </div>
+          </section>
 
-          {/* Submit Button */}
-          <div className="mt-8 pt-6 border-t border-neutral-200">
+          <div className="flex w-full flex-col items-stretch pt-4 sm:items-end sm:pt-6">
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent-500 text-white rounded-lg font-bold text-lg hover:bg-accent-600 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-105 shadow-medium"
+              className="flex w-full items-center justify-center gap-2 rounded-lg bg-stitch-secondary px-8 py-4 font-label-sm text-label-sm uppercase tracking-wider text-stitch-on-secondary transition-all duration-300 hover:bg-stitch-secondary-container hover:shadow-[0_0_15px_rgba(255,185,95,0.4)] disabled:cursor-not-allowed disabled:opacity-50 sm:w-auto"
             >
               {isSubmitting ? (
                 <>
                   <FiLoader className="animate-spin" />
-                  Submitting...
+                  Submitting…
                 </>
               ) : (
                 <>
                   Complete Registration
-                  <FiCheck />
+                  <span className="material-symbols-outlined">arrow_forward</span>
                 </>
               )}
             </button>
-            <p className="text-sm text-neutral-500 text-center mt-4">
-              <span className="text-red-500">*</span> Required fields
-            </p>
           </div>
+
+          <p className="pt-2 text-center text-sm text-stitch-on-surface-variant sm:pt-4">
+            <Link
+              href="/"
+              className="inline-block font-body-md text-stitch-primary transition-colors hover:underline"
+            >
+              ← Back to workshop home
+            </Link>
+          </p>
         </form>
-      </div>
+      </main>
+
+      <StitchFooter />
     </div>
   );
 }
-

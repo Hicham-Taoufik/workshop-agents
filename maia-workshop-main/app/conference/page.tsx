@@ -1,44 +1,33 @@
-import {
-  FiCalendar,
-  FiMapPin,
-  FiUsers,
-  FiGlobe,
-  FiBookOpen,
-  FiAward,
-} from 'react-icons/fi';
-import Image from 'next/image';
+import Image from "next/image";
+import Link from "next/link";
+import { StitchFooter, StitchNav } from "@/components/stitch/StitchChrome";
+import { stitchMain, stitchPage, stitchSectionCard } from "@/lib/stitch-ui";
 
 export default function ConferencePage() {
-  const quickLinks = [
-    'Topics',
-    'TPC',
-    'Important Dates',
-    'Submissions',
-    'Registration',
-    'Program',
-    'Awards',
-    'Previous Editions',
-  ];
-
   const speakers = [
-    { name: 'Pr. Mohammad AL GHOBIRI', title: 'AI Researcher' },
-    { name: 'Pr. Abdelaaziz EL HIBAOUI', title: 'Machine Learning Expert' },
-    { name: 'Pr. Jose Ignacio CASTILLO-VELASQUEZ', title: 'Data Science Specialist' },
+    { name: "Pr. Mohammad AL GHOBIRI", title: "AI Researcher" },
+    { name: "Pr. Abdelaaziz EL HIBAOUI", title: "Machine Learning Expert" },
+    {
+      name: "Pr. Jose Ignacio CASTILLO-VELASQUEZ",
+      title: "Data Science Specialist",
+    },
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/40 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto space-y-10">
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-700 via-primary-800 to-blue-950 text-white px-6 py-12 md:px-10 md:py-16 shadow-hard">
-          <div className="absolute -top-12 -right-12 w-52 h-52 bg-white/10 rounded-full blur-2xl" />
-          <div className="absolute -bottom-14 -left-10 w-48 h-48 bg-accent-400/20 rounded-full blur-2xl" />
+    <div className={stitchPage}>
+      <StitchNav highlight="conference" />
+
+      <main className={`${stitchMain} flex flex-col gap-stack-lg pt-4 md:pt-6`}>
+        <section className="relative overflow-hidden rounded-xl border border-white/10 bg-stitch-surface-container p-8 shadow-lg md:p-12">
+          <div className="pointer-events-none absolute -right-12 -top-12 h-52 w-52 rounded-full bg-stitch-primary/15 blur-2xl" />
+          <div className="pointer-events-none absolute -bottom-14 -left-10 h-48 w-48 rounded-full bg-stitch-secondary/10 blur-2xl" />
           <div className="relative text-center">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/10 px-4 py-2 text-xs md:text-sm font-semibold tracking-wide mb-6">
-              <FiAward />
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold tracking-wide text-stitch-primary md:text-sm">
+              <span className="material-symbols-outlined text-[18px]">award_star</span>
               <span>7th Edition</span>
             </div>
-            <div className="flex justify-center mb-6">
-              <div className="bg-white/95 p-3 md:p-4 rounded-2xl shadow-medium">
+            <div className="mb-6 flex justify-center">
+              <div className="rounded-2xl border border-white/10 bg-stitch-surface-container-high p-3 shadow-md md:p-4">
                 <Image
                   src="/images/logoAIA26.png"
                   alt="AiA26 Conference Logo"
@@ -48,126 +37,136 @@ export default function ConferencePage() {
                 />
               </div>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-4 font-display">7th AiA26</h1>
-            <p className="text-lg md:text-2xl text-blue-100 max-w-3xl mx-auto">
-              International Conference on Artificial Intelligence Applications (AiA26)
+            <h1 className="font-headline-xl text-headline-xl text-stitch-on-surface">
+              7th AiA26
+            </h1>
+            <p className="mx-auto mt-4 max-w-3xl font-body-lg text-body-lg text-stitch-on-surface-variant">
+              International Conference on Artificial Intelligence Applications
             </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm">
-              <span className="rounded-full bg-white/10 border border-white/20 px-4 py-2">
-                Martil - Tetouan, Morocco
+            <div className="mt-6 flex flex-wrap justify-center gap-3 text-sm text-stitch-on-surface-variant">
+              <span className="rounded-full border border-white/10 bg-stitch-surface-container-low px-4 py-2">
+                ENS, Abdelmalek Essaadi University · Martil / Tetouan, Morocco
               </span>
-              <span className="rounded-full bg-white/10 border border-white/20 px-4 py-2">
-                June 12-13, 2026
+              <span className="rounded-full border border-white/10 bg-stitch-surface-container-low px-4 py-2">
+                12–13 June 2026
               </span>
             </div>
           </div>
         </section>
 
-        <section className="bg-gradient-to-r from-primary-600 to-primary-800 rounded-2xl p-8 md:p-10 text-white shadow-medium border border-primary-500/40">
-          <h2 className="text-3xl font-bold mb-4 font-display">AiA26 Conference Overview</h2>
-          <p className="text-lg leading-relaxed mb-4 text-primary-50">
-            The 7th edition of the International Conference on Artificial Intelligence Applications (AiA26) will be held on June 13th, 2026, at the Higher Normal School (ENS) of Abdelmalek Essaadi University, Tetuan, Morocco.
+        <section
+          className={`${stitchSectionCard} border-stitch-outline-variant/30 p-6 md:p-8 lg:p-10`}
+        >
+          <h2 className="mb-4 font-headline-lg text-headline-lg text-stitch-on-surface">
+            Conference overview
+          </h2>
+          <p className="mb-4 font-body-lg text-body-lg text-stitch-on-surface-variant">
+            The 7th International Conference on Artificial Intelligence
+            Applications (AiA26) is a two-day event,{" "}
+            <span className="text-stitch-on-surface">12–13 June 2026</span>, hosted
+            at the École Normale Supérieure (ENS), Abdelmalek Essaadi University,
+            Tetouan, Morocco.
           </p>
-          <p className="text-lg leading-relaxed text-primary-100">
-            AiA26 includes invited keynotes, oral presentations, and poster sessions. The conference provides a forum for best practices, novel algorithms, and research contributions in AI design, implementation, modeling, analysis, verification, and applications.
+          <p className="font-body-md text-body-md text-stitch-on-surface-variant">
+            The program features invited keynotes, oral presentations, and poster
+            sessions—bringing together best practices, novel algorithms, and
+            research in AI design, implementation, modeling, analysis, verification,
+            and applications.
           </p>
         </section>
 
-        <section className="bg-white rounded-2xl p-6 md:p-8 border border-neutral-200 shadow-soft">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4 font-display">Conference Navigation</h2>
-          <div className="flex flex-wrap gap-3">
-            {quickLinks.map((item) => (
-              <span
-                key={item}
-                className="px-4 py-2 rounded-full border border-primary-200 bg-gradient-to-r from-primary-50 to-blue-50 text-primary-700 text-sm font-semibold hover:shadow-sm transition-shadow"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+        <section className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { icon: "groups", label: "Participants", value: "305+" },
+            { icon: "public", label: "Countries", value: "7+" },
+            { icon: "menu_book", label: "Publications", value: "120" },
+            { icon: "military_tech", label: "Awards", value: "18" },
+          ].map((s) => (
+            <div
+              key={s.label}
+              className="rounded-xl border border-white/10 bg-stitch-surface-container p-5 shadow-md transition-shadow hover:shadow-lg"
+            >
+              <div className="mb-2 flex items-center gap-2 text-stitch-primary">
+                <span className="material-symbols-outlined">{s.icon}</span>
+                <span className="text-xs font-bold uppercase tracking-wide text-stitch-on-surface-variant">
+                  {s.label}
+                </span>
+              </div>
+              <p className="text-3xl font-bold text-stitch-on-surface">{s.value}</p>
+            </div>
+          ))}
         </section>
 
-        <section className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-soft hover:shadow-medium transition-shadow">
-            <div className="flex items-center gap-2 mb-2 text-primary-600">
-              <FiUsers />
-              <span className="text-xs font-bold uppercase tracking-wide">Participants</span>
-            </div>
-            <p className="text-3xl font-bold text-neutral-900">305+</p>
-          </div>
-          <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-soft hover:shadow-medium transition-shadow">
-            <div className="flex items-center gap-2 mb-2 text-primary-600">
-              <FiGlobe />
-              <span className="text-xs font-bold uppercase tracking-wide">Countries</span>
-            </div>
-            <p className="text-3xl font-bold text-neutral-900">7+</p>
-          </div>
-          <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-soft hover:shadow-medium transition-shadow">
-            <div className="flex items-center gap-2 mb-2 text-primary-600">
-              <FiBookOpen />
-              <span className="text-xs font-bold uppercase tracking-wide">Publications</span>
-            </div>
-            <p className="text-3xl font-bold text-neutral-900">120</p>
-          </div>
-          <div className="bg-white border border-neutral-200 rounded-2xl p-5 shadow-soft hover:shadow-medium transition-shadow">
-            <div className="flex items-center gap-2 mb-2 text-primary-600">
-              <FiAward />
-              <span className="text-xs font-bold uppercase tracking-wide">Awards</span>
-            </div>
-            <p className="text-3xl font-bold text-neutral-900">18</p>
-          </div>
-        </section>
-
-        <section className="bg-white rounded-2xl p-6 md:p-8 border border-neutral-200 shadow-soft">
-          <h2 className="text-2xl font-bold text-gray-900 mb-5 font-display">Featured Speakers</h2>
-          <div className="grid md:grid-cols-3 gap-5">
+        <section className={stitchSectionCard}>
+          <h2 className="mb-5 font-headline-md text-headline-md text-stitch-on-surface">
+            Featured speakers
+          </h2>
+          <div className="grid gap-5 md:grid-cols-3">
             {speakers.map((speaker) => (
               <div
                 key={speaker.name}
-                className="bg-gradient-to-br from-neutral-50 to-blue-50 border border-neutral-200 rounded-xl p-5 hover:shadow-soft transition-shadow"
+                className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5 transition-shadow hover:shadow-md"
               >
-                <h3 className="font-bold text-neutral-900">{speaker.name}</h3>
-                <p className="text-sm text-neutral-600 mt-1">{speaker.title}</p>
+                <h3 className="font-bold text-stitch-on-surface">{speaker.name}</h3>
+                <p className="mt-1 text-sm text-stitch-on-surface-variant">
+                  {speaker.title}
+                </p>
               </div>
             ))}
           </div>
         </section>
 
-        <section className="grid md:grid-cols-2 gap-6">
-          <div className="bg-white border-2 border-primary-200 rounded-2xl p-6 shadow-soft">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-primary-100 p-3 rounded-lg">
-                <FiCalendar className="text-primary-600 text-2xl" />
+        <section className="grid gap-6 md:grid-cols-2">
+          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-6 shadow-md">
+            <div className="mb-4 flex items-center gap-4">
+              <div className="rounded-lg bg-stitch-primary-container/30 p-3 text-stitch-primary">
+                <span className="material-symbols-outlined text-2xl">event</span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">Important Dates</h3>
-                <p className="text-gray-600">June 12-13, 2026</p>
-                <p className="text-sm text-gray-500">Main conference day: June 13, 2026</p>
+                <h3 className="text-xl font-semibold text-stitch-on-surface">
+                  Important dates
+                </h3>
+                <p className="text-stitch-on-surface-variant">
+                  12–13 June 2026
+                </p>
+                <p className="text-sm text-stitch-outline">
+                  Two-day main conference (ENS, Abdelmalek Essaadi University)
+                </p>
               </div>
             </div>
           </div>
-          <div className="bg-white border-2 border-primary-200 rounded-2xl p-6 shadow-soft">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="bg-primary-100 p-3 rounded-lg">
-                <FiMapPin className="text-primary-600 text-2xl" />
+          <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container p-6 shadow-md">
+            <div className="mb-4 flex items-center gap-4">
+              <div className="rounded-lg bg-stitch-primary-container/30 p-3 text-stitch-primary">
+                <span className="material-symbols-outlined text-2xl">
+                  location_on
+                </span>
               </div>
               <div>
-                <h3 className="text-xl font-semibold text-gray-900">Location</h3>
-                <p className="text-gray-600">ENS, Abdelmalek Essaadi University</p>
-                <p className="text-sm text-gray-500">Martil - Tetouan, Morocco</p>
+                <h3 className="text-xl font-semibold text-stitch-on-surface">
+                  Location
+                </h3>
+                <p className="text-stitch-on-surface-variant">
+                  ENS, Abdelmalek Essaadi University
+                </p>
+                <p className="text-sm text-stitch-outline">
+                  Martil - Tetouan, Morocco
+                </p>
               </div>
             </div>
           </div>
         </section>
 
-        <section className="rounded-2xl bg-white p-6 md:p-8 border border-neutral-200 shadow-soft">
-          <h3 className="text-2xl font-bold text-gray-900 mb-6 font-display">List of Topics</h3>
-          <div className="grid lg:grid-cols-3 gap-6">
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 p-5">
-              <h4 className="text-lg font-bold text-primary-700 mb-3">
+        <section className={stitchSectionCard}>
+          <h3 className="mb-6 font-headline-md text-headline-md text-stitch-on-surface">
+            List of topics
+          </h3>
+          <div className="grid gap-6 lg:grid-cols-3">
+            <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5">
+              <h4 className="mb-3 text-lg font-bold text-stitch-primary">
                 Artificial Intelligence for Learning and e-learning
               </h4>
-              <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-700">
+              <ul className="list-disc space-y-1.5 pl-5 text-sm text-stitch-on-surface-variant">
                 <li>Didactic & Pedagogical & learning Impact</li>
                 <li>Intelligent system & E-Learning tools</li>
                 <li>Data in Education and E-learning</li>
@@ -180,34 +179,50 @@ export default function ConferencePage() {
                 <li>Virtual Universities, Classrooms, and Laboratories</li>
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 p-5">
-              <h4 className="text-lg font-bold text-primary-700 mb-3">
+            <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5">
+              <h4 className="mb-3 text-lg font-bold text-stitch-primary">
                 Computational Intelligence & Applied Mathematics
               </h4>
-              <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-700">
+              <ul className="list-disc space-y-1.5 pl-5 text-sm text-stitch-on-surface-variant">
                 <li>Computational Intelligence & Applied Mathematics</li>
                 <li>Mathematics for artificial intelligence</li>
                 <li>Intelligence Artificial & data sciences</li>
                 <li>Machine Learning & Deep Learning</li>
                 <li>IoT for Smart City & Smart Home</li>
-                <li>...</li>
+                <li>…</li>
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-blue-50 to-white rounded-xl border border-blue-100 p-5">
-              <h4 className="text-lg font-bold text-primary-700 mb-3">
+            <div className="rounded-xl border border-stitch-outline-variant/30 bg-stitch-surface-container-low p-5">
+              <h4 className="mb-3 text-lg font-bold text-stitch-primary">
                 Alliance between Physics-Chemistry and Artificial Intelligence
               </h4>
-              <ul className="list-disc pl-5 space-y-1.5 text-sm text-gray-700">
+              <ul className="list-disc space-y-1.5 pl-5 text-sm text-stitch-on-surface-variant">
                 <li>Intelligence Artificial & Chemistry</li>
                 <li>Intelligence Artificial & Physics</li>
                 <li>Modelling & computation in applied physical science</li>
-                <li>...</li>
+                <li>…</li>
               </ul>
             </div>
           </div>
         </section>
-      </div>
+
+        <div className="flex flex-wrap justify-center gap-4 pb-4">
+          <Link
+            href="/register"
+            className="rounded-lg bg-stitch-secondary-container px-8 py-3 font-label-sm text-label-sm text-stitch-on-secondary-container shadow-[0_0_20px_rgba(238,152,0,0.2)] transition-all hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(238,152,0,0.35)]"
+          >
+            Workshop registration
+          </Link>
+          <Link
+            href="/about"
+            className="rounded-lg border border-stitch-primary bg-stitch-primary/5 px-8 py-3 font-label-sm text-label-sm text-stitch-primary transition-colors hover:bg-stitch-primary/10"
+          >
+            AGENTIC AI event
+          </Link>
+        </div>
+      </main>
+
+      <StitchFooter />
     </div>
   );
 }
-
